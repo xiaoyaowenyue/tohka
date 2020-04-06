@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.ht.authorization.autoconfig.AuthenticationAutoConfiguration,\
+  com.ht.authorization.autoconfig.AuthorizationExceptionHandler

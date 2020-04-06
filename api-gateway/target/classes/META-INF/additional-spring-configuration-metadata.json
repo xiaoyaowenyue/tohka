@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "com.ht.gateway.ignore-urls",
+      "description": "ignore urls.",
+      "type": "java.util.List<java.lang.String>"
+    }
+  ]
+}

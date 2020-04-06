@@ -1,0 +1,13 @@
+mybatis-plus:
+  mapper-locations: "classpath*:**/mapper/*Mapper.xml"
+  global-config:
+    db-config:
+      id-type: auto
+  typeAliasesPackage: com.ht.tohka.**.entity
+  type-enums-package: com.ht.tohka.**.entity.enums
+  configuration:
+    use-actual-param-name: true
+    default-enum-type-handler: com.baomidou.mybatisplus.extension.handlers.EnumTypeHandler
+
+pagehelper:
+  reasonable: true

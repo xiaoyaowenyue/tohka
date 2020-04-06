@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--客户映射 指定到dao接口 -->
+<mapper namespace="com.ht.tohka.usercenter.sysmenu.mapper.SysMenuMapper">
+    <delete id="unBindRole">
+        delete from sys_role_menu where sys_menu_id = #{id}
+    </delete>
+
+    <select id="selectByPage" resultType="com.ht.tohka.usercenter.api.sysmenu.entity.SysMenu">
+        SELECT * FROM sys_menu
+        <where>
+            <if test="query.id!=null">id = #{query.id}</if>
+            <if test="query.text!=null and query.text!=''">and text like CONCAT(#{query.text},'%')</if>
+        </where>
+    </select>
+    <select id="selectByUserIdAndPid" resultType="com.ht.tohka.usercenter.api.sysmenu.entity.SysMenu">
+        SELECT sm.* FROM `sys_menu` sm where sm.id in
+        (select DISTINCT srm.sys_menu_id FROM sys_user_role sur
+        RIGHT JOIN sys_role_menu srm on sur.sys_role_id = srm.sys_role_id
+        where sur.sys_user_id=#{userId}) and sm.pid=#{pid}
+    </select>
+    <select id="selectByPid" resultType="com.ht.tohka.usercenter.api.sysmenu.entity.SysMenu">
+        select * from sys_menu where pid = #{pid}
+    </select>
+    <select id="countByIdAndRoleId" resultType="java.lang.Integer">
+        select count(*) from sys_role_menu where sys_menu_id=#{id} and sys_role_id = #{roleId}
+    </select>
+
+</mapper>

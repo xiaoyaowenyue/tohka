@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="info" monitorInterval="30">
+    <Properties>
+        <Property name="logPath" value="/${project.artifactId}/logs"/>
+        <Property name="pattern" value="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Properties>
+
+    <appenders>
+        <console name="Console" target="SYSTEM_OUT">
+            <!--输出日志的格式-->
+            <PatternLayout pattern="${pattern}"/>
+        </console>
+        <!-- <RollingFile name="RollingFileInfo" fileName="${logPath}/info.log"
+                      filePattern="${logPath}/${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+             &lt;!&ndash;控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）&ndash;&gt;
+             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+             <PatternLayout pattern="${pattern}"/>
+             <Policies>
+                 <TimeBasedTriggeringPolicy/>
+                 <SizeBasedTriggeringPolicy size="100 MB"/>
+             </Policies>
+         </RollingFile>-->
+    </appenders>
+
+    <loggers>
+        <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
+        <logger name="org.springframework" level="INFO"/>
+        <logger name="org.mybatis" level="INFO"/>
+        <root level="info">
+            <appender-ref ref="Console"/>
+            <!--<appender-ref ref="RollingFileInfo"/>-->
+        </root>
+    </loggers>
+</configuration>

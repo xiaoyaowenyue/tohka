@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "com.ht.gateway",
+      "type": "com.ht.tohka.gateway.GatewayConfig",
+      "sourceType": "com.ht.tohka.gateway.GatewayConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "com.ht.gateway.ignore-urls",
+      "type": "java.util.List<java.lang.String>",
+      "description": "ignore urls."
+    },
+    {
+      "name": "com.ht.gateway.route",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "route define. key: route id. value: route uri",
+      "sourceType": "com.ht.tohka.gateway.GatewayConfig"
+    }
+  ],
+  "hints": []
+}
