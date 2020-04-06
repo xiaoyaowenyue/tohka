@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.ht.tohka.common.core.GlobalExceptionHandler,\
-  com.ht.tohka.common.core.config.RedisConfig
