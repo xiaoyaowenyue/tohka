@@ -1,6 +1,0 @@
-com:
-  ht:
-    gateway:
-      ignore-urls: /*/api/ueditor
-      route: 
-        auth: "lb://user-center-service"
