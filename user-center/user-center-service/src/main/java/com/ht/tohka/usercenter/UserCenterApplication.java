@@ -1,9 +1,12 @@
 package com.ht.tohka.usercenter;
 
+import com.ht.tohka.usercenter.sys.event.PmChangeTopic;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 
+@EnableBinding(PmChangeTopic.class)
 @SpringCloudApplication
 @MapperScan({"com.ht.tohka.**.mapper"})
 public class UserCenterApplication {

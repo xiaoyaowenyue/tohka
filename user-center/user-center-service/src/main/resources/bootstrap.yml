@@ -12,5 +12,16 @@ spring:
         file-extension: yml
       discovery:
         server-addr: 127.0.0.1:8848
+    stream:
+      kafka:
+        binder:
+          brokers: 192.168.50.128:9092 #kafka实例
+          auto-create-topics: true #自动创建topic
+        bindings:
+          pmChangeOutput:
+            destination: pmChangeTopic
+            content-type: application/json
+          pmChangeInput:
+            destination: pmChangeTopic
 server:
   port: 8081
