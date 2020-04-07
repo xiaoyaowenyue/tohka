@@ -25,8 +25,6 @@ public class SysPermissionService {
     private SysPermissionMapper sysPermissionMapper;
     @Autowired
     private PmChangeTopic pmChangeTopic;
-   /* @Autowired //单体架构事件驱动方式
-    private ApplicationEventPublisher publisher;*/
 
     public PageResult<SysPermission> selectByPage(Integer page, Integer size, SysPermissionQuery query) {
         PageHelper.startPage(page, size);
@@ -49,7 +47,6 @@ public class SysPermissionService {
         sysPermissionMapper.unBindRole(id);
         sysPermissionMapper.deleteById(id);
         // 发送到消息队列，通知所有授权中心服务实例卸载旧权限
-//        publisher.publishEvent(new PmChangeEvent(null, oldPermission));
         pmChangeTopic.output().send(MessageBuilder.withPayload(new PmChangeEvent(null, oldPermission)).build());
     }
 
@@ -67,7 +64,6 @@ public class SysPermissionService {
     public void save(SysPermission permission) {
         sysPermissionMapper.insert(permission);
         // 通知系统加载新权限
-//        publisher.publishEvent(new PmChangeEvent(permission, null));
         pmChangeTopic.output().send(MessageBuilder.withPayload(new PmChangeEvent(null, permission)).build());
     }
 
@@ -75,7 +71,6 @@ public class SysPermissionService {
         SysPermission oldPermission = sysPermissionMapper.selectById(permission.getId());
         sysPermissionMapper.updateById(permission);
         // 通知系统权限有变更，重新加载该权限
-//        publisher.publishEvent(new PmChangeEvent(oldPermission, permission));
         pmChangeTopic.output().send(MessageBuilder.withPayload(new PmChangeEvent(oldPermission, permission)).build());
     }
 

@@ -31,7 +31,6 @@ public class SysService {
     // 管理内存中的权限
     @StreamListener(PmChangeTopic.INPUT)
     public void receive(String payload) throws IOException {
-        System.out.println("权限刷新" + payload);
         PmChangeEvent event = objectMapper.readValue(payload, PmChangeEvent.class);
         SysPermission newPermission = event.getNewPermission();
         SysPermission oldPermission = event.getOldPermission();
