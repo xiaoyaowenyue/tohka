@@ -46,7 +46,7 @@ public class SysService {
     private SysPermissionService sysPermissionService;
 
     // 系统所有敏感url，加载到内存(或redis)
-    // url -> 权限标识  建立映射关系
+    // url <-> 权限标识  建立映射关系
     private static final Map<DefaultApiMatcher, String> inMemoryPermissions = new ConcurrentHashMap<>();
 
     @PostConstruct

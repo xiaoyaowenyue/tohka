@@ -26,12 +26,7 @@ public class DefaultApiMatcher {
 
     public boolean match(String path, String method) {
         boolean isPathMatch = pathMatcher.match(pattern, path);
-        boolean isMethodMatch;
-        if (method == null) {
-            isMethodMatch = true;
-        } else {
-            isMethodMatch = HttpMethod.resolve(this.method) == HttpMethod.resolve(method);
-        }
+        boolean isMethodMatch = HttpMethod.resolve(this.method) == HttpMethod.resolve(method);
         return isPathMatch && isMethodMatch;
     }
 

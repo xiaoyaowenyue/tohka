@@ -1,7 +1,6 @@
 package com.ht.authorization;
 
 import com.ht.authorization.exception.AuthenticationException;
-import com.ht.tohka.common.core.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundValueOperations;
 import org.springframework.data.redis.core.RedisTemplate;

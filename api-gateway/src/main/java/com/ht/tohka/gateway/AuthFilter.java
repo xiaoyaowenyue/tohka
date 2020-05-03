@@ -1,7 +1,5 @@
 package com.ht.tohka.gateway;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ht.tohka.common.core.DefaultApiMatcher;
 import com.ht.tohka.common.core.Result;
 import com.ht.tohka.usercenter.api.auth.feign.RemoteAuthService;
@@ -38,7 +36,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
     // 忽略鉴权的地址
     private List<DefaultApiMatcher> ignoreMatchers;
     // 需要鉴权的接口地址
-    private DefaultApiMatcher apiMatcher = new DefaultApiMatcher("/*/api/**", null);
+    private DefaultApiMatcher apiMatcher = new DefaultApiMatcher("/*/api/**");
 
     @PostConstruct
     public void init() {
@@ -46,7 +44,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
         if (ignoreUrls == null) {
             this.ignoreMatchers = Collections.emptyList();
         } else {
-            ignoreMatchers = ignoreUrls.stream().map(ignoreUrl -> new DefaultApiMatcher(ignoreUrl, null))
+            ignoreMatchers = ignoreUrls.stream().map(DefaultApiMatcher::new)
                     .collect(Collectors.toList());
         }
     }
