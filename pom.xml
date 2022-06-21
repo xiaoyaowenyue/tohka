@@ -25,7 +25,7 @@
         <page-helper.version>1.2.10</page-helper.version>
         <project.build.locales>zh_CN</project.build.locales>
         <spring-boot.version>2.1.12.RELEASE</spring-boot.version>
-        <mysql.version>8.0.16</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <swagger.version>2.9.2</swagger.version>
     </properties>
 
